@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <link rel="stylesheet" href="contacto.css">
+    <style>
+        /* Estilo para la animación de error */
+        .error-animation {
+            animation: shake 0.3s;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Estilo para la animación de éxito */
+        .success-animation {
+            animation: success 0.5s forwards;
+        }
+
+        @keyframes success {
+            0% { opacity: 0; transform: scale(0); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Estilo para la imagen de verificación */
+        .checkmark {
+            display: none;
+            width: 50px;
+            height: 50px;
+            margin-top: 10px;
+        }
+
+        .show-checkmark .checkmark {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="../imagenes/LOGO.png" alt="logo" height="54">
+        </div>
+        <nav id="navegador">
+            <ul class="lista">
+                <li class="boton-inicio"><a href="../index.html">Inicio</a></li>
+                <li class="boton-sobremi"><a href="./sobremi.html">Sobre mí</a></li>
+                <li class="boton-porfolio"><a href="./porfolio.html">Porfolio</a></li>
+                <li class="boton-servicios"><a href="./servicios.html">Servicios</a></li>
+                <li class="boton-contacto"><a href="./contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+
+        <div class="container">
+            <h1 class="animated-text">CONTACTO</h1>
+
+            <div class="contenedor">
+                <form id="contactForm" action="mailto:ayelen.hassan@davinci.edu.ar">
+
+                    <div class="row">
+                        <input type="text" name="nombre" placeholder="Nombre" required>
+                        <input type="text" name="apellido" placeholder="Apellido" required>
+                    </div>
+
+                    <div class="row">
+                        <input type="email" name="email" placeholder="E-mail" required>
+                        <input type="tel" name="telefono" placeholder="Teléfono" required>
+                    </div>
+
+                    <div class="row">
+                        <select name="sexo" required>
+                            <option value="">Sexo</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
+                        </select>
+                    </div>
+
+                    <div class="escribir-mensaje">
+                        <textarea id="message" name="subject" placeholder="Escribir mensaje" required></textarea>
+                    </div>
+
+                    <label for="ifecha" class="fecha-nacimiento">Fecha de nacimiento</label>
+                    <input id="ifecha" type="date" name="fecha" class="altura" required>
+
+                    <div class="row">
+                        <input id="radio" type="checkbox" name="check" required>
+                        <label for="radio">He leído y acepto términos y condiciones</label>
+                    </div>
+
+                    <div class="botones">
+                        <div class="enviar">
+                            <input type="submit" value="ENVIAR">
+                        </div>
+    
+                        <div class="resetear">
+                            <input type="reset" value="RESETEAR">
+                        </div>
+                    </div>
+
+                    <img src="../imagenes/check.png" alt="Check" class="checkmark">
+                </form>
+            </div>
+        </div>
+
+    </main>
+    
+    <footer id="footer">
+        <div>
+            <div>
+                <div>
+                    <p> Ayelén Hassan - site 2024</p>
+                </div>
+                <div class="redes">
+                    <ul class="lista flex">
+                        <li>
+                            <a href="https://www.instagram.com/hassuar_?igsh=ZXkza2c5aTh6eGN3" target="_blank">
+                                <img src="../imagenes/instagram.png" alt="instagram">
+                            </a>
+                        </li>
+    
+                        <li>
+                            <a href="https://www.behance.net/ayelen_hassan" target="_blank">
+                                <img src="../imagenes/behance.png" alt="behance">
+                            </a>
+                        </li>
+    
+                        <li>
+                            <a href="https://www.linkedin.com/in/ayelen-hassan/" target="_blank">
+                                <img src="../imagenes/linkedin.png" alt="linkedin">
+                            </a>
+                        </li>
+    
+                        <li>
+                            <a href="mailto:ayelen.hassan@davinci.edu.ar" target="_blank">
+                                <img src="../imagenes/mail.png" alt="mail">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            var name = document.getElementsByName('nombre')[0].value;
+            var email = document.getElementsByName('email')[0].value;
+            var message = document.getElementById('message').value;
+
+            var form = document.getElementById('contactForm');
+            var checkmark = document.querySelector('.checkmark');
+
+            if (name === '' || email === '' || message === '') {
+                alert('Por favor, completa todos los campos.');
+                event.preventDefault(); // Evita el envío del formulario
+
+                form.classList.add('error-animation');
+                setTimeout(function() {
+                    form.classList.remove('error-animation');
+                }, 300);
+            } else {
+                alert('Formulario enviado correctamente.');
+                form.classList.add('success-animation');
+                form.classList.add('show-checkmark');
+            }
+        });
+
+
+
+
+
+
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+        var animatedText = document.querySelector('.animated-text');
+        animatedText.classList.add('show');
+    });
+    </script>
+
+
+
+</body>
+
+</html>
